@@ -1,0 +1,1053 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Radio Bang — Live + Online</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <style>
+    :root {
+      /* Enhanced color palette */
+      --bg: #0a0c10;
+      --bg-gradient: linear-gradient(135deg, #0a0c10 0%, #161b24 100%);
+      --panel: #13161d;
+      --panel-hover: #1a1f29;
+      --ink: #f0f3f9;
+      --muted: #8a94a6;
+      --line: #242c3b;
+      --primary: #ff2b46;
+      --primary-gradient: linear-gradient(135deg, #ff2b46 0%, #ff5c72 100%);
+      --accent: #ff97a6;
+      --glow: rgba(255, 43, 70, 0.4);
+      --success: #22c55e;
+      --error: #ff3b30;
+      
+      /* Spacing and sizing */
+      --radius-xl: 24px;
+      --radius-lg: 16px;
+      --radius-md: 12px;
+      --radius-sm: 8px;
+      
+      /* Shadows and effects */
+      --shadow-1: 0 10px 40px rgba(0, 0, 0, 0.5);
+      --shadow-2: 0 20px 60px rgba(0, 0, 0, 0.6);
+      --glow-effect: 0 0 20px var(--glow);
+      
+      /* Transitions */
+      --transition-fast: 0.2s ease;
+      --transition-normal: 0.3s ease;
+      --transition-slow: 0.5s ease;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    html, body {
+      height: 100%;
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      background: var(--bg-gradient);
+      color: var(--ink);
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    
+    /* Decorative background elements */
+    .bg-effects {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+      overflow: hidden;
+    }
+    
+    .bg-effects::before,
+    .bg-effects::after {
+      content: '';
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.15;
+      filter: blur(60px);
+    }
+    
+    .bg-effects::before {
+      width: 500px;
+      height: 500px;
+      top: -250px;
+      left: -250px;
+      background: var(--primary);
+    }
+    
+    .bg-effects::after {
+      width: 600px;
+      height: 600px;
+      bottom: -300px;
+      right: -300px;
+      background: var(--accent);
+    }
+    
+    /* Container and layout */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+    
+    /* Header */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 24px;
+    }
+    
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    
+    .brand img {
+      width: 60px;
+      height: 60px;
+      border-radius: 16px;
+      object-fit: cover;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow-1);
+      transition: var(--transition-normal);
+    }
+    
+    .brand img:hover {
+      transform: rotate(5deg);
+      box-shadow: var(--glow-effect);
+    }
+    
+    .titles {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .title {
+      font-size: clamp(1.6rem, 1rem + 2vw, 2.4rem);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      margin: 0;
+      background: var(--primary-gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .tag {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-top: 4px;
+    }
+    
+    .status-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: var(--primary-gradient);
+      color: #fff;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      box-shadow: var(--shadow-1);
+      animation: pulse 2s infinite;
+    }
+    
+    .status-chip .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #fff;
+    }
+    
+    /* Mode selector */
+    .mode-selector {
+      margin: 24px 0;
+      display: flex;
+      gap: 12px;
+    }
+    
+    .segmented-control {
+      display: inline-flex;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-1);
+    }
+    
+    .segmented-control button {
+      padding: 12px 24px;
+      border: none;
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+      font-weight: 600;
+      transition: var(--transition-fast);
+      position: relative;
+    }
+    
+    .segmented-control button.active {
+      background: var(--primary);
+      color: #fff;
+    }
+    
+    .segmented-control button:not(.active):hover {
+      background: var(--panel-hover);
+      color: var(--ink);
+    }
+    
+    /* Main content sections */
+    .content-section {
+      display: grid;
+      gap: 24px;
+    }
+    
+    /* LIVE section */
+    .live-panel {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 28px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      padding: 28px;
+      box-shadow: var(--shadow-2);
+      transition: var(--transition-normal);
+    }
+    
+    .live-panel:hover {
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.7);
+    }
+    
+    .artwork-container {
+      aspect-ratio: 1/1;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      background: linear-gradient(135deg, #1a2028, #131820);
+      display: grid;
+      place-items: center;
+      position: relative;
+      box-shadow: var(--shadow-1);
+    }
+    
+    .artwork-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition-slow);
+    }
+    
+    .artwork-container:hover img {
+      transform: scale(1.05);
+    }
+    
+    .live-badge {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      background: rgba(0, 0, 0, 0.7);
+      color: #fff;
+      border-radius: 999px;
+      padding: 8px 16px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      font-size: 0.85rem;
+      backdrop-filter: blur(10px);
+    }
+    
+    .track-info {
+      display: grid;
+      gap: 16px;
+      align-content: start;
+    }
+    
+    .eyebrow {
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-weight: 700;
+      font-size: 0.85rem;
+    }
+    
+    .track-title {
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      font-size: clamp(1.5rem, 1rem + 1.5vw, 2.2rem);
+      line-height: 1.2;
+    }
+    
+    .track-subtitle {
+      color: var(--muted);
+      font-size: 1.1rem;
+    }
+    
+    .player-controls {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+    
+    .control-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border: none;
+      background: var(--primary-gradient);
+      color: #fff;
+      border-radius: 999px;
+      padding: 16px 24px;
+      cursor: pointer;
+      font-weight: 700;
+      box-shadow: var(--shadow-1);
+      transition: var(--transition-fast);
+    }
+    
+    .control-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--glow-effect);
+    }
+    
+    .play-btn {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      position: relative;
+    }
+    
+    .play-btn::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      box-shadow: 0 0 0 0 var(--glow);
+      animation: pulse 1.8s ease-out infinite;
+    }
+    
+    .volume-control {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--bg);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 12px 18px;
+      flex: 1;
+      max-width: 280px;
+    }
+    
+    .volume-control i {
+      color: var(--muted);
+      font-size: 1.2rem;
+    }
+    
+    input[type="range"] {
+      flex: 1;
+      height: 5px;
+      appearance: none;
+      background: var(--line);
+      border-radius: 99px;
+      outline: none;
+    }
+    
+    input[type="range"]::-webkit-slider-thumb {
+      appearance: none;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--primary);
+      border: 2px solid var(--bg);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+      cursor: pointer;
+      transition: var(--transition-fast);
+    }
+    
+    input[type="range"]::-webkit-slider-thumb:hover {
+      background: var(--accent);
+      transform: scale(1.2);
+    }
+    
+    .connection-status {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+    
+    .connection-status .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--muted);
+    }
+    
+    .connection-status.playing .dot {
+      background: var(--success);
+      box-shadow: 0 0 10px var(--success);
+    }
+    
+    .connection-status.error .dot {
+      background: var(--error);
+      box-shadow: 0 0 10px var(--error);
+    }
+    
+    /* ONLINE section */
+    .search-panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      padding: 24px;
+      box-shadow: var(--shadow-2);
+    }
+    
+    .search-panel h2 {
+      margin: 0 0 16px;
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+    
+    .search-container {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    
+    .search-input {
+      flex: 1;
+      padding: 14px 18px;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--line);
+      background: var(--bg);
+      color: var(--ink);
+      font-family: inherit;
+      font-size: 1rem;
+      transition: var(--transition-fast);
+    }
+    
+    .search-input:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 2px var(--glow);
+    }
+    
+    .search-btn {
+      padding: 14px 20px;
+      border-radius: var(--radius-lg);
+      border: none;
+      background: var(--primary-gradient);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 600;
+      transition: var(--transition-fast);
+    }
+    
+    .search-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--glow-effect);
+    }
+    
+    .results-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    
+    .track-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: var(--bg);
+      padding: 16px;
+      display: grid;
+      gap: 12px;
+      position: relative;
+      transition: var(--transition-normal);
+      overflow: hidden;
+    }
+    
+    .track-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: var(--primary-gradient);
+      transform: translateY(-100%);
+      transition: var(--transition-normal);
+    }
+    
+    .track-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-1);
+      border-color: var(--primary);
+    }
+    
+    .track-card:hover::before {
+      transform: translateY(0);
+    }
+    
+    .track-card img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-radius: var(--radius-md);
+    }
+    
+    .track-card .meta {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+    
+    .track-card .play-btn-sm {
+      position: absolute;
+      top: 130px;
+      right: 16px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: white;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: var(--transition-normal);
+      box-shadow: var(--shadow-1);
+    }
+    
+    .track-card:hover .play-btn-sm {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    /* Footer */
+    footer {
+      margin: 40px 0 10px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+    
+    /* YouTube overlay */
+    .yt-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(5px);
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .yt-overlay.visible {
+      display: flex;
+      opacity: 1;
+    }
+    
+    .yt-container {
+      width: min(920px, 92vw);
+      aspect-ratio: 16/9;
+      background: #000;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
+      transform: scale(0.9);
+      transition: transform 0.3s ease;
+    }
+    
+    .yt-overlay.visible .yt-container {
+      transform: scale(1);
+    }
+    
+    .yt-close {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(26, 32, 40, 0.8);
+      border: 1px solid var(--line);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 10;
+      transition: var(--transition-fast);
+    }
+    
+    .yt-close:hover {
+      background: var(--primary);
+      transform: rotate(90deg);
+    }
+    
+    .yt-frame {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    
+    /* Animations */
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 0 0 var(--glow);
+      }
+      70% {
+        box-shadow: 0 0 0 16px rgba(255, 43, 70, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(255, 43, 70, 0);
+      }
+    }
+    
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    /* Responsive design */
+    @media (max-width: 1024px) {
+      .live-panel {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+      
+      .artwork-container {
+        max-width: 400px;
+        justify-self: center;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .container {
+        padding: 16px;
+      }
+      
+      header {
+        flex-direction: column;
+        text-align: center;
+        gap: 16px;
+      }
+      
+      .brand {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .player-controls {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      
+      .volume-control {
+        max-width: 100%;
+      }
+      
+      .results-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .segmented-control {
+        width: 100%;
+      }
+      
+      .segmented-control button {
+        flex: 1;
+        padding: 10px;
+        font-size: 0.9rem;
+      }
+      
+      .search-container {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-effects"></div>
+  
+  <div class="container">
+    <header>
+      <div class="brand">
+        <img src="image/logo.png" alt="Radio Bang logo" />
+        <div class="titles">
+          <h1 class="title">Radio Bang</h1>
+          <div class="tag">Bang Your Day with Bang</div>
+        </div>
+      </div>
+      <div class="status-chip">
+        <span class="dot"></span> Live On Air
+      </div>
+    </header>
+
+    <div class="mode-selector">
+      <div class="segmented-control" aria-label="Mode selector">
+        <button id="tabLive" class="active">Live Stream</button>
+        <button id="tabSearch">Music Library</button>
+      </div>
+    </div>
+
+    <div class="content-section">
+      <!-- LIVE section -->
+      <section class="live-panel" id="liveView" aria-label="Live Stream">
+        <div class="artwork-container">
+          <img src="image/logo.png" alt="Station artwork" />
+          <div class="live-badge" id="badge">LIVE</div>
+        </div>
+        <div class="track-info">
+          <div class="eyebrow">Now Playing</div>
+          <div class="track-title" id="trackTitle">Radio Bang — Live Stream</div>
+          <div class="track-subtitle" id="trackSub">Broadcasting the future of sound</div>
+          <div class="player-controls">
+            <button class="control-btn play-btn" id="playBtn" aria-label="Play/Pause">
+              <i class="fas fa-play" id="playIcon"></i>
+            </button>
+            <div class="volume-control" role="group" aria-label="Volume">
+              <i class="fas fa-volume-up" id="volIcon"></i>
+              <input type="range" id="volume" min="0" max="100" value="70">
+            </div>
+            <div class="connection-status" id="status">
+              <span class="dot"></span>
+              <span id="statusText">Ready to connect</span>
+            </div>
+          </div>
+          <audio id="player" preload="none" crossorigin="anonymous"></audio>
+        </div>
+      </section>
+
+      <!-- ONLINE section -->
+      <section class="search-panel" id="searchView" aria-label="Music Library" style="display:none">
+        <h2>Music Library <span style="color: var(--muted); font-weight: 400;">— Discover full tracks</span></h2>
+        <div class="search-container">
+          <input id="searchInput" class="search-input" placeholder="Search songs, artists, or genres..." />
+          <button id="searchBtn" class="search-btn">
+            <i class="fas fa-search"></i> Search
+          </button>
+        </div>
+        <div class="results-grid" id="resultsGrid">
+          <div class="placeholder-text" style="grid-column: 1 / -1; text-align: center; padding: 40px; color: var(--muted);">
+            <i class="fas fa-music" style="font-size: 3rem; margin-bottom: 16px; opacity: 0.5;"></i>
+            <p>Search for your favorite music to get started</p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <footer>© <span id="year"></span> Radio Bang — A station by Tanjil Hasan Himel</footer>
+  </div>
+
+  <!-- YouTube overlay player -->
+  <div id="ytOverlay" class="yt-overlay">
+    <div class="yt-container">
+      <button id="ytClose" class="yt-close">
+        <i class="fas fa-xmark"></i>
+      </button>
+      <iframe id="ytFrame" class="yt-frame" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <script>
+    ;(() => {
+      // ---------- CONFIG ----------
+      const STREAM_URL = 'https://holdem-successfully-parks-packets.trycloudflare.com/stream';
+      const DEFAULT_ART = 'image/logo.png';
+      const YT_KEY = 'AIzaSyDNBVg8IPEIscbqyYFYIGPHfwbztaukAfQ';
+
+      // ---------- ELEMENTS ----------
+      const tabLive = document.getElementById('tabLive');
+      const tabSearch = document.getElementById('tabSearch');
+      const liveView = document.getElementById('liveView');
+      const searchView = document.getElementById('searchView');
+
+      const player = document.getElementById('player');
+      const playBtn = document.getElementById('playBtn');
+      const playIcon = document.getElementById('playIcon');
+      const volume = document.getElementById('volume');
+      const volIcon = document.getElementById('volIcon');
+      const status = document.getElementById('status');
+      const statusText = document.getElementById('statusText');
+      const trackTitle = document.getElementById('trackTitle');
+      const trackSub = document.getElementById('trackSub');
+
+      const resultsGrid = document.getElementById('resultsGrid');
+      const searchInput = document.getElementById('searchInput');
+      const searchBtn = document.getElementById('searchBtn');
+
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      // ---------- STATE ----------
+      let mode = 'live'; // 'live' | 'search'
+      let isPlaying = false;
+
+      // ---------- MODE SWITCH ----------
+      function setTab(active) {
+        tabLive.classList.toggle('active', active === 'live');
+        tabSearch.classList.toggle('active', active === 'search');
+        liveView.style.display = active === 'live' ? '' : 'none';
+        searchView.style.display = active === 'search' ? '' : 'none';
+        mode = active;
+        
+        if (mode === 'live') {
+          startLive();
+        } else {
+          player.pause();
+          updatePlayState(false);
+        }
+      }
+      
+      tabLive.addEventListener('click', () => setTab('live'));
+      tabSearch.addEventListener('click', () => setTab('search'));
+
+      // ---------- LIVE PLAYER ----------
+      player.volume = 0.7;
+      
+      function setVolIcon(v) {
+        if (v === 0) volIcon.className = 'fas fa-volume-mute';
+        else if (v < 0.35) volIcon.className = 'fas fa-volume-off';
+        else if (v < 0.75) volIcon.className = 'fas fa-volume-down';
+        else volIcon.className = 'fas fa-volume-up';
+      }
+      
+      volume.addEventListener('input', e => {
+        const v = Number(e.target.value) / 100;
+        player.volume = v;
+        setVolIcon(v);
+      });
+
+      async function startLive() {
+        player.src = STREAM_URL;
+        trackTitle.textContent = 'Radio Bang — Live Stream';
+        trackSub.textContent = 'LIVE 24/7 Broadcast';
+        setStatus('Connecting…');
+        
+        try {
+          await player.play();
+          setStatus('LIVE', 'playing');
+          updatePlayState(true);
+        } catch (err) {
+          setStatus('Connection failed', 'error');
+          updatePlayState(false);
+        }
+      }
+      
+      function setStatus(text, state) {
+        statusText.textContent = text;
+        status.classList.remove('playing', 'error');
+        
+        if (state === 'playing') {
+          status.classList.add('playing');
+        } else if (state === 'error') {
+          status.classList.add('error');
+        }
+      }
+      
+      function updatePlayState(playing) {
+        isPlaying = playing;
+        playIcon.className = playing ? 'fas fa-pause' : 'fas fa-play';
+        
+        if (playing) {
+          playBtn.style.animation = 'pulse 1.8s ease-out infinite';
+        } else {
+          playBtn.style.animation = 'none';
+        }
+      }
+
+      playBtn.addEventListener('click', async () => {
+        if (mode !== 'live') {
+          setTab('live');
+          return;
+        }
+        
+        if (player.paused) {
+          setStatus('Connecting…');
+          try {
+            await player.play();
+            setStatus('LIVE', 'playing');
+            updatePlayState(true);
+          } catch (err) {
+            setStatus('Connection failed', 'error');
+            updatePlayState(false);
+          }
+        } else {
+          player.pause();
+          setStatus('Paused');
+          updatePlayState(false);
+        }
+      });
+      
+      player.addEventListener('pause', () => {
+        if (mode === 'live') {
+          setStatus('Paused');
+          updatePlayState(false);
+        }
+      });
+
+      // ---------- YOUTUBE SEARCH ----------
+      async function ytSearch(q) {
+        const params = new URLSearchParams({
+          key: YT_KEY,
+          part: 'snippet',
+          type: 'video',
+          maxResults: '18',
+          order: 'viewCount',
+          videoCategoryId: '10',
+          q
+        });
+        
+        const url = `https://www.googleapis.com/youtube/v3/search?${params.toString()}`;
+        const res = await fetch(url);
+        
+        if (!res.ok) throw new Error('YouTube API error');
+        
+        const data = await res.json();
+        return (data.items || []).map(it => ({
+          id: it.id.videoId,
+          title: it.snippet.title,
+          artist: it.snippet.channelTitle,
+          art: it.snippet.thumbnails?.medium?.url || it.snippet.thumbnails?.default?.url || DEFAULT_ART
+        }));
+      }
+
+      function renderResults(items) {
+        resultsGrid.innerHTML = '';
+        
+        if (items.length === 0) {
+          resultsGrid.innerHTML = `
+            <div style="grid-column: 1 / -1; text-align: center; padding: 40px; color: var(--muted);">
+              <i class="fas fa-search" style="font-size: 3rem; margin-bottom: 16px; opacity: 0.5;"></i>
+              <p>No results found. Try a different search term.</p>
+            </div>
+          `;
+          return;
+        }
+        
+        items.forEach(t => {
+          const card = document.createElement('div');
+          card.className = 'track-card';
+          card.innerHTML = `
+            <img src="${t.art}" alt="${t.title}">
+            <div><strong>${t.title}</strong></div>
+            <div class="meta">${t.artist || 'YouTube'}</div>
+            <button class="play-btn-sm" data-id="${t.id}">
+              <i class="fas fa-play"></i>
+            </button>
+          `;
+          
+          card.querySelector('.play-btn-sm').addEventListener('click', () => openYT(t.id, t));
+          resultsGrid.appendChild(card);
+        });
+      }
+
+      async function doSearch() {
+        const q = (searchInput.value || '').trim();
+        if (!q) return;
+        
+        // Pause live if needed
+        if (mode === 'live' && isPlaying) {
+          player.pause();
+          updatePlayState(false);
+        }
+        
+        resultsGrid.innerHTML = `
+          <div style="grid-column: 1 / -1; text-align: center; padding: 40px; color: var(--muted);">
+            <i class="fas fa-spinner fa-spin" style="font-size: 3rem; margin-bottom: 16px;"></i>
+            <p>Searching for "${q}"...</p>
+          </div>
+        `;
+        
+        try {
+          const items = await ytSearch(q);
+          renderResults(items);
+        } catch (err) {
+          resultsGrid.innerHTML = `
+            <div style="grid-column: 1 / -1; text-align: center; padding: 40px; color: var(--muted);">
+              <i class="fas fa-exclamation-triangle" style="font-size: 3rem; margin-bottom: 16px;"></i>
+              <p>Search error. Please try again later.</p>
+            </div>
+          `;
+        }
+      }
+      
+      searchBtn.addEventListener('click', doSearch);
+      searchInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') doSearch();
+      });
+
+      // ---------- YT Overlay ----------
+      function openYT(id, meta) {
+        const frame = document.getElementById('ytFrame');
+        frame.src = `https://www.youtube.com/embed/${id}?autoplay=1&rel=0`;
+        
+        const overlay = document.getElementById('ytOverlay');
+        overlay.classList.add('visible');
+        
+        trackTitle.textContent = meta?.title || 'YouTube';
+        trackSub.textContent = `${meta?.artist || 'YouTube'} • Full track`;
+      }
+      
+      document.getElementById('ytClose').addEventListener('click', () => {
+        const frame = document.getElementById('ytFrame');
+        frame.src = '';
+        
+        const overlay = document.getElementById('ytOverlay');
+        overlay.classList.remove('visible');
+      });
+      
+      document.getElementById('ytOverlay').addEventListener('click', (e) => {
+        if (e.target.id === 'ytOverlay') {
+          const frame = document.getElementById('ytFrame');
+          frame.src = '';
+          
+          const overlay = document.getElementById('ytOverlay');
+          overlay.classList.remove('visible');
+        }
+      });
+
+      // ---------- INIT ----------
+      setTab('live');
+    })();
+  </script>
+</body>
+</html>
