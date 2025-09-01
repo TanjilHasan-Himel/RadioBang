@@ -1,0 +1,14 @@
+{
+  "@context": "https://schema.org",
+  "@type": "RadioStation",
+  "name": "Radio Bang",
+  "url": "https://tanjilhasan-himel.github.io/RadioBang/",
+  "logo": "https://tanjilhasan-himel.github.io/RadioBang/image/logo.png",
+  "slogan": "Bang Your Day with Bang",
+  "broadcastFrequency": "Online",
+  "areaServed": {
+    "@type": "Country",
+    "name": "Bangladesh"
+  },
+  "inLanguage": ["bn", "en", "hi"]
+}

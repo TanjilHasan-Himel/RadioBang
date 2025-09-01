@@ -1,0 +1,17 @@
+{
+  "name": "Radio Bang",
+  "short_name": "RadioBang",
+  "start_url": "/RadioBang/",
+  "scope": "/RadioBang/",
+  "display": "standalone",
+  "background_color": "#0b0c0f",
+  "theme_color": "#e11932",
+  "icons": [
+    {
+      "src": "image/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
