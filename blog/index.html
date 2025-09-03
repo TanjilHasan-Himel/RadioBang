@@ -1,33 +1,301 @@
 <!doctype html>
 <html lang="bn">
 <head>
+  <!-- Basic SEO -->
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Radio Bang Blog | বাংলা গান, মিউজিক নিউজ</title>
-  <meta name="description" content="Radio Bang ব্লগে পড়ুন বাংলা গান, মিউজিক নিউজ, এবং রেডিও টিপস।">
+  <title>Blog — Radio Bang</title>
+  <meta name="description" content="Radio Bang ব্লগ — আপডেট, প্লেলিস্ট, মিউজিক কালচার, টেক সেটআপ, এবং আরও অনেক কিছু।">
   <link rel="canonical" href="https://tanjilhasan-himel.github.io/RadioBang/blog/">
-  <link rel="icon" href="../image/fav1.png">
+
+  <!-- Brand / Social -->
+  <meta property="og:title" content="Blog — Radio Bang">
+  <meta property="og:description" content="Radio Bang ব্লগ — আপডেট, প্লেলিস্ট, মিউজিক কালচার, টেক সেটআপ, এবং আরও।">
+  <meta property="og:image" content="https://tanjilhasan-himel.github.io/RadioBang/image/fav3.png">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://tanjilhasan-himel.github.io/RadioBang/blog/">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Fonts: Inter + Hind Siliguri (Bangla) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+
+  <!-- Favicons (reuse your main image folder) -->
+  <link rel="icon" type="image/png" sizes="16x16" href="../image/fav1.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../image/fav2.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="../image/fav3.png">
+  <link rel="apple-touch-icon" href="../image/fav3.png">
+  <meta name="theme-color" content="#e11932">
+
   <style>
-    body{font-family:Inter,Arial,sans-serif;background:#0b0c0f;color:#e9ecf1;margin:0}
-    .container{max-width:900px;margin:0 auto;padding:22px}
-    a{color:#ff7a90;text-decoration:none}
-    a:hover{text-decoration:underline}
-    .post{border-bottom:1px solid #1e2531;padding:18px 0}
-    .post h2{margin:0;color:#e11932}
-    .post p{color:#9aa3b2}
+    :root{
+      /* same palette as main */
+      --bg:#0b0c0f; --panel:#11151b; --ink:#e9ecf1; --muted:#9aa3b2; --line:#1e2531;
+      --primary:#e11932; --accent:#ff7a90; --glow:rgba(225,25,50,.4);
+      --radius-xl:26px; --radius-lg:18px; --radius-md:12px; --radius-sm:10px;
+      --shadow-1:0 14px 40px rgba(0,0,0,.45);
+      --content-w: 980px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background:
+        radial-gradient(1200px 800px at 10% -10%, rgba(225,25,50,.08), transparent 60%),
+        radial-gradient(800px 600px at 120% 10%, rgba(255,122,144,.06), transparent 60%),
+        var(--bg);
+      color:var(--ink);
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      line-height:1.6;
+      -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+    }
+    /* Bangla font helper (use when the line is Bangla-heavy) */
+    .bn{font-family:"Hind Siliguri", Inter, system-ui, sans-serif;}
+
+    .container{max-width:1200px;margin:0 auto;padding:22px}
+
+    /* Header (copied design with Blog link + Home) */
+    .rb-header{
+      display:flex;align-items:center;justify-content:space-between;gap:16px;
+      padding-bottom:12px;border-bottom:1px solid var(--line)
+    }
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand img{width:56px;height:56px;border-radius:14px;object-fit:contain;background:#0c1117;border:1px solid var(--line)}
+    .titles{display:flex;flex-direction:column}
+    .title{font-size:clamp(1.4rem,1rem+1.6vw,2.1rem);font-weight:900;letter-spacing:-.02em;margin:0}
+    .tag{color:var(--muted)}
+    .rb-nav{display:flex;align-items:center;gap:16px}
+    .chip{
+      display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border-radius:999px;
+      background:var(--primary);color:#fff;font-weight:800;letter-spacing:.06em;text-transform:uppercase
+    }
+    .chip .dot{width:8px;height:8px;border-radius:50%;background:#fff}
+
+    /* Reusable Blog button style (animated) */
+    .btn-pill{
+      --pill-bg:#0f1217;
+      position:relative;display:inline-flex;align-items:center;justify-content:center;
+      gap:8px;padding:10px 16px;border-radius:999px;text-decoration:none;color:var(--ink);
+      font-weight:800;background:var(--pill-bg);isolation:isolate;
+    }
+    .btn-pill::before{
+      content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;
+      background:conic-gradient(from 0deg,
+        transparent 10%, rgba(255,255,255,.08) 12%,
+        var(--primary) 35%, rgba(255,122,144,.6) 55%,
+        var(--primary) 75%, transparent 90%);
+      -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite:xor; mask-composite:exclude;
+      animation:rb-border-rotate 3.5s linear infinite; opacity:.85; pointer-events:none;
+    }
+    .btn-pill:hover{color:#fff; box-shadow:0 6px 22px rgba(225,25,50,.18), 0 0 0 1px rgba(225,25,50,.3) inset;}
+    @keyframes rb-border-rotate{to{transform:rotate(360deg)}}
+
+    /* Page title slab */
+    .slab{
+      margin-top:18px;border:1px solid var(--line);border-radius:var(--radius-xl);
+      background:linear-gradient(180deg,var(--panel),#0e1217);box-shadow:var(--shadow-1);
+      padding:22px;display:grid;gap:8px
+    }
+    .slab h1{margin:0;font-size:clamp(1.4rem,1rem+1.2vw,1.9rem);letter-spacing:-.02em}
+    .slab p{margin:0;color:var(--muted)}
+
+    /* Search + categories */
+    .toolbar{
+      margin-top:16px;display:flex;gap:10px;flex-wrap:wrap;align-items:center
+    }
+    .search{
+      display:flex;align-items:center;gap:10px;flex:1;
+      border:1px solid var(--line);border-radius:12px;background:#0f141a;padding:10px 12px;
+    }
+    .search input{
+      flex:1;border:none;outline:none;background:transparent;color:var(--ink);font-size:15px
+    }
+    .cats{display:flex;gap:8px;flex-wrap:wrap}
+    .pill{
+      border:1px solid var(--line);background:#0f1217;color:var(--ink);
+      padding:8px 12px;border-radius:999px;cursor:pointer;font-weight:700
+    }
+    .pill.active{background:var(--primary);color:#fff}
+
+    /* Cards grid */
+    .grid{
+      margin-top:16px;
+      display:grid;gap:14px;
+      grid-template-columns:repeat(3,1fr);
+    }
+    .card{
+      border:1px solid var(--line);border-radius:16px;background:#0f141a;padding:12px;
+      display:grid;gap:10px;position:relative;transition:transform .15s ease, box-shadow .15s ease;
+    }
+    .card:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(225,25,50,.15), 0 0 0 1px rgba(225,25,50,.25) inset}
+    .card::after{
+      content:"";position:absolute;inset:auto auto -2px 12px;height:2px;width:40%;
+      background:linear-gradient(90deg,transparent,var(--primary),transparent);opacity:.8
+    }
+    .card img{width:100%;height:160px;object-fit:cover;border-radius:12px}
+    .meta{display:flex;gap:10px;flex-wrap:wrap;color:var(--muted);font-size:.85rem}
+    .card h3{margin:0;font-size:1.05rem;letter-spacing:-.01em}
+    .card p{margin:0;color:var(--muted);font-size:.95rem}
+    .card a.btn-read{
+      justify-self:start;
+      margin-top:6px;
+      text-decoration:none;
+      font-weight:800;
+      color:#fff;
+      background:var(--primary);
+      border:1px solid var(--line);
+      padding:10px 14px;border-radius:10px;
+      transition:transform .12s ease
+    }
+    .card a.btn-read:hover{transform:translateY(-1px)}
+
+    /* Footer */
+    footer{margin:26px 0 6px;text-align:center;color:var(--muted)}
+
+    /* Responsive */
+    @media (max-width:980px){ .grid{grid-template-columns:repeat(2,1fr)} }
+    @media (max-width:560px){
+      .grid{grid-template-columns:1fr}
+      .brand img{width:48px;height:48px}
+    }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>📻 Radio Bang Blog</h1>
-    <div class="post">
-      <h2><a href="posts/post1.html">🎶 ২০২৫ সালের সেরা বাংলা গান</a></h2>
-      <p>২০২৫ সালে বাংলা মিউজিক ইন্ডাস্ট্রিতে অসাধারণ কিছু গান এসেছে। বিস্তারিত পড়ুন...</p>
+    <!-- Header (matches main) -->
+    <header class="rb-header">
+      <div class="brand">
+        <img src="../image/logo.png" alt="Radio Bang logo">
+        <div class="titles">
+          <h1 class="title">Radio Bang</h1>
+          <div class="tag">Bang Your Day with Bang</div>
+        </div>
+      </div>
+      <nav class="rb-nav">
+        <a class="btn-pill" href="../"><i class="fas fa-home"></i><span>Home</span></a>
+        <div class="chip"><span class="dot"></span> On Air</div>
+      </nav>
+    </header>
+
+    <!-- Slab -->
+    <section class="slab">
+      <h1 class="bn">ব্লগ — খবর, প্লেলিস্ট, টিপস</h1>
+      <p class="bn">স্টেশনের আপডেট, মিউজিক রিভিউ, টেক গাইড—সব এক জায়গায়।</p>
+    </section>
+
+    <!-- Tools -->
+    <div class="toolbar">
+      <div class="search">
+        <i class="fas fa-search" style="color:#7a869a"></i>
+        <input id="q" type="search" placeholder="খুঁজুন (title, tags)…">
+      </div>
+      <div class="cats">
+        <button class="pill active" data-cat="all">All</button>
+        <button class="pill" data-cat="update">Updates</button>
+        <button class="pill" data-cat="playlist">Playlists</button>
+        <button class="pill" data-cat="tech">Tech</button>
+        <button class="pill" data-cat="bangla">বাংলা</button>
+      </div>
     </div>
-    <div class="post">
-      <h2><a href="posts/post2.html">🎤 Hindi & English Hits Now Trending</a></h2>
-      <p>Catch the latest Bollywood & International chartbusters, curated by Radio Bang...</p>
-    </div>
+
+    <!-- Posts grid -->
+    <section class="grid" id="grid">
+      <!-- Card 1 -->
+      <article class="card" data-cat="update bangla" data-text="radio bang launch rajshahi বাংলা রেডিও লঞ্চ আপডেট">
+        <img src="../image/logo.png" alt="Radio Bang launch">
+        <div class="meta"><span>Sep 2025</span><span>•</span><span class="bn">আপডেট</span></div>
+        <h3 class="bn">Radio Bang আনুষ্ঠানিকভাবে চালু!</h3>
+        <p class="bn">Rajshahi থেকে বাংলা, Hindi, English — non-stop vibes. শুনতে থাকুন।</p>
+        <a class="btn-read" href="post-sample.html">Read</a>
+      </article>
+
+      <!-- Card 2 -->
+      <article class="card" data-cat="playlist bangla" data-text="chill playlist bangla playlist বাংলা প্লেলিস্ট">
+        <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?q=80&w=1200" alt="Chill playlist">
+        <div class="meta"><span>Sep 2025</span><span>•</span><span>Playlist</span></div>
+        <h3 class="bn">Tonight Chill — ১০টি হালকা গান</h3>
+        <p class="bn">রাতে কাজ/স্টাডির সাথে মানানসই সিলেকশন — প্লেলিস্ট ড্রপ ইনসাইড।</p>
+        <a class="btn-read" href="post-sample.html">Read</a>
+      </article>
+
+      <!-- Card 3 -->
+      <article class="card" data-cat="tech" data-text="icecast cloudflared stream guide setup how to">
+        <img src="https://images.unsplash.com/photo-1545235617-9465d2a55698?q=80&w=1200" alt="Tech setup">
+        <div class="meta"><span>Sep 2025</span><span>•</span><span>Tech</span></div>
+        <h3>How we stream: Icecast + Cloudflared</h3>
+        <p>End-to-end free stack for stable public streaming. Config notes inside.</p>
+        <a class="btn-read" href="post-sample.html">Read</a>
+      </article>
+    </section>
+
+    <footer>© <span id="y"></span> Radio Bang — A station by Tanjil Hasan Himel</footer>
   </div>
+
+  <script>
+  // Year
+  document.getElementById('y').textContent = new Date().getFullYear();
+
+  const grid = document.getElementById('grid');
+  const q = document.getElementById('q');
+  const pills = [...document.querySelectorAll('.pill')];
+  let activeCat = 'all';
+  let allPosts = [];
+
+  // Build a card DOM node from a post object
+  function cardHTML(p){
+    return `
+      <article class="card" data-cat="${(p.tags||[]).join(' ')}" 
+               data-text="${(p.title+' '+(p.excerpt||'')+' '+(p.tags||[]).join(' ')).toLowerCase()}">
+        <img src="${p.cover || '../image/logo.png'}" alt="${p.title}">
+        <div class="meta"><span>${new Date(p.date).toLocaleDateString('en-GB',{year:'numeric',month:'short'})}</span></div>
+        <h3 class="${/[\u0980-\u09FF]/.test(p.title)?'bn':''}">${p.title}</h3>
+        <p class="${/[\u0980-\u09FF]/.test(p.excerpt||'')?'bn':''}">${p.excerpt || ''}</p>
+        <a class="btn-read" href="posts/${p.slug}.html">Read</a>
+      </article>`;
+  }
+
+  function render(posts){
+    grid.innerHTML = posts.map(cardHTML).join('');
+    applyFilter(); // apply current filter/search to newly rendered cards
+  }
+
+  function applyFilter(){
+    const term = (q.value || '').toLowerCase().trim();
+    [...grid.children].forEach(card=>{
+      const cats = (card.getAttribute('data-cat')||'').split(/\s+/);
+      const text = (card.getAttribute('data-text')||'');
+      const matchCat = activeCat==='all' || cats.includes(activeCat);
+      const matchText = !term || text.includes(term);
+      card.style.display = (matchCat && matchText) ? '' : 'none';
+    });
+  }
+
+  // Load posts.json then render
+  fetch('posts.json')
+    .then(r=>r.json())
+    .then(list=>{
+      // sort by date desc
+      allPosts = list.sort((a,b)=> new Date(b.date)-new Date(a.date));
+      render(allPosts);
+    })
+    .catch(()=>{ grid.innerHTML = '<div style="color:var(--muted)">Could not load posts.</div>' });
+
+  q.addEventListener('input', applyFilter);
+  pills.forEach(p=>{
+    p.addEventListener('click', ()=>{
+      pills.forEach(x=>x.classList.remove('active'));
+      p.classList.add('active');
+      activeCat = p.getAttribute('data-cat');
+      applyFilter();
+    });
+  });
+</script>
+
+  
 </body>
 </html>

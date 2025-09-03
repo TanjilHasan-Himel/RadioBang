@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="bn">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ঢাকার এফএম রেডিওর পতন থেকে পুনরুদ্ধার | Radio Bang</title>
+    <meta name="description"
+        content="২০০৮-১৩: ঢাকার এফএম রেডিওর স্বর্ণযুগ, কেন পতন, এবং ডিজিটালে ফিরে আসার পথ—সংক্ষিপ্ত বিশ্লেষণ।">
+    <link rel="canonical" href="https://tanjilhasan-himel.github.io/RadioBang/blog/posts/best-fm-radios.html" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="ঢাকার এফএম রেডিওর পতন থেকে পুনরুদ্ধার | Radio Bang">
+    <meta property="og:description" content="স্বর্ণযুগ থেকে ডিজিটাল যুগ—ঢাকার এফএম রেডিওর গল্প ও ভবিষ্যৎ।">
+    <meta property="og:image" content="https://tanjilhasan-himel.github.io/RadioBang/image/fav3.png">
+    <meta property="og:url" content="https://tanjilhasan-himel.github.io/RadioBang/blog/posts/best-fm-radios.html">
+    <meta property="og:type" content="article">
+    <meta property="article:publisher" content="https://www.facebook.com/profile.php?id=61580021317051">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="ঢাকার এফএম রেডিওর পতন থেকে পুনরুদ্ধার | Radio Bang">
+    <meta name="twitter:description" content="পতনের কারণ, সুযোগ ও করণীয়—রেডিওর ভবিষ্যৎ বিশ্লেষণ।">
+    <meta name="twitter:image" content="https://tanjilhasan-himel.github.io/RadioBang/image/fav3.png">
+
+    <!-- fonts & icons (same as main) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600;700;800&family=Inter:wght@400;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
+    <style>
+        /* ==== shared brand palette (same as main) ==== */
+        :root {
+            --bg: #0b0c0f;
+            --panel: #11151b;
+            --ink: #e9ecf1;
+            --muted: #9aa3b2;
+            --line: #1e2531;
+            --primary: #e11932;
+            --accent: #ff7a90;
+            --glow: rgba(225, 25, 50, .4);
+            --radius-xl: 26px;
+            --radius-lg: 18px;
+            --radius-md: 12px;
+            --shadow-1: 0 14px 40px rgba(0, 0, 0, .45);
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        html,
+        body {
+            height: 100%
+        }
+
+        body {
+            margin: 0;
+            color: var(--ink);
+            background: radial-gradient(1200px 800px at 10% -10%, rgba(225, 25, 50, .08), transparent 60%),
+                radial-gradient(800px 600px at 120% 10%, rgba(255, 122, 144, .06), transparent 60%),
+                var(--bg);
+            font-family: "Noto Sans Bengali", Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.65;
+        }
+
+        .container {
+            max-width: 940px;
+            margin: 0 auto;
+            padding: 22px
+        }
+
+        /* header (reused) */
+        .rb-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--line)
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px
+        }
+
+        .brand img {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            object-fit: contain;
+            background: #0c1117;
+            border: 1px solid var(--line)
+        }
+
+        .titles {
+            display: flex;
+            flex-direction: column
+        }
+
+        .title {
+            font-size: clamp(1.2rem, 1rem+1.2vw, 1.8rem);
+            font-weight: 900;
+            letter-spacing: -.02em;
+            margin: 0
+        }
+
+        .tag {
+            color: var(--muted)
+        }
+
+        .chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 12px;
+            border-radius: 999px;
+            background: var(--primary);
+            color: #fff;
+            font-weight: 800;
+            letter-spacing: .06em;
+            text-transform: uppercase
+        }
+
+        .chip .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #fff
+        }
+
+        .rb-nav {
+            display: flex;
+            align-items: center;
+            gap: 16px
+        }
+
+        /* blog pill (same animation) */
+        .btn-blog {
+            --pill-bg: #0f1217;
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            border-radius: 999px;
+            text-decoration: none;
+            color: var(--ink);
+            font-weight: 800;
+            background: var(--pill-bg);
+            isolation: isolate
+        }
+
+        .btn-blog::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            padding: 1px;
+            background: conic-gradient(from 0deg, transparent 10%, rgba(255, 255, 255, .08) 12%, var(--primary) 35%, rgba(255, 122, 144, .6) 55%, var(--primary) 75%, transparent 90%);
+            -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            animation: rb-border-rotate 3.5s linear infinite;
+            opacity: .85;
+            pointer-events: none
+        }
+
+        .btn-blog:hover {
+            color: #fff;
+            box-shadow: 0 6px 22px rgba(225, 25, 50, .18), 0 0 0 1px rgba(225, 25, 50, .3) inset
+        }
+
+        @keyframes rb-border-rotate {
+            to {
+                transform: rotate(360deg)
+            }
+        }
+
+        /* article wrapper */
+        .post {
+            margin-top: 18px;
+            background: linear-gradient(180deg, var(--panel), #0e1217);
+            border: 1px solid var(--line);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-1);
+            padding: 22px
+        }
+
+        .post h1 {
+            margin: .2rem 0 6px;
+            font-size: clamp(1.6rem, 1.2rem+1.4vw, 2.2rem);
+            letter-spacing: -.01em
+        }
+
+        .meta {
+            color: var(--muted);
+            font-size: .95rem;
+            margin-bottom: 14px
+        }
+
+        .hero {
+            border-radius: 16px;
+            overflow: hidden;
+            margin: 6px 0 18px;
+            border: 1px solid var(--line)
+        }
+
+        .hero img {
+            width: 100%;
+            height: auto;
+            display: block
+        }
+
+        .post h2 {
+            margin: 22px 0 10px;
+            font-size: 1.2rem;
+            color: var(--ink)
+        }
+
+        .post p {
+            margin: 10px 0
+        }
+
+        .note {
+            border-left: 3px solid var(--primary);
+            padding: 10px 12px;
+            background: #0f1319;
+            border-radius: 10px;
+            color: var(--muted)
+        }
+
+        .share {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 18px
+        }
+
+        .share a {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 14px;
+            border-radius: 999px;
+            border: 1px solid var(--line);
+            background: #0f1217;
+            color: var(--ink);
+            text-decoration: none;
+            font-weight: 700
+        }
+
+        .share a:hover {
+            box-shadow: 0 8px 22px rgba(225, 25, 50, .15)
+        }
+
+        footer {
+            margin: 28px 0 6px;
+            text-align: center;
+            color: var(--muted)
+        }
+
+        @media (max-width:560px) {
+            .brand img {
+                width: 44px;
+                height: 44px
+            }
+        }
+    </style>
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Article",
+    "headline":"ঢাকার এফএম রেডিওর পতন থেকে পুনরুদ্ধার",
+    "description":"স্বর্ণযুগ, পতনের কারণ ও পুনরুদ্ধারের রোডম্যাপ—ঢাকার এফএম রেডিওর বিশ্লেষণ।",
+    "author":{"@type":"Person","name":"Tanjil Hasan Himel"},
+    "publisher":{"@type":"Organization","name":"Radio Bang","logo":{"@type":"ImageObject","url":"https://tanjilhasan-himel.github.io/RadioBang/image/logo.png"}},
+    "mainEntityOfPage":"https://tanjilhasan-himel.github.io/RadioBang/blog/posts/best-fm-radios.html"
+  }
+  </script>
+</head>
+
+<body>
+    <div class="container">
+        <!-- brand-consistent header -->
+        <header class="rb-header">
+            <div class="brand">
+                <a href="../../" style="display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit">
+                    <img src="../../image/blog_image/goldenradiotime.png" alt="Radio Bang">
+                    <div class="titles">
+                        <h1 class="title">Radio Bang</h1>
+                        <div class="tag">Bang Your Day with Bang</div>
+                    </div>
+                </a>
+            </div>
+            <nav class="rb-nav">
+                <a class="btn-blog" href="../"><span>Blog</span></a>
+                <div class="chip"><span class="dot"></span> On Air</div>
+            </nav>
+        </header>
+
+        <article class="post">
+            <header>
+                <h1>ঢাকার এফএম রেডিওর পতন থেকে পুনরুদ্ধার</h1>
+                <div class="meta">আপডেট: <time datetime="2025-09-03">০৩ সেপ্টেম্বর ২০২৫</time> · পড়তে সময় ~৫ মিনিট</div>
+            </header>
+
+            <div class="hero"><img src="../../image/blog_image/goldenradiotime.png" alt="FM Radio in Dhaka"></div>
+
+            <p>২০০৮–২০১৩ ছিল ঢাকার এফএম রেডিওর স্বর্ণযুগ। নতুন গান, তারকা আরজে, রাতভর টক-শো—সবকিছুই ছিল হাইপে। তারপর
+                স্মার্টফোন, ইউটিউব, ফেসবুকের উত্থান; বিজ্ঞাপন কমা; এবং কনটেন্টে পুনর্নবীকরণের ঘাটতি—সব মিলিয়ে মাধ্যমটি
+                ধীরে ধীরে পিছিয়ে পড়ে।</p>
+            <p>ঢাকার এফএম রেডিওর স্বর্ণযুগ শুরু হয়েছিল ২০০৮ সাল থেকে, যা ২০১৩ পর্যন্ত ছিল একেবারে তুঙ্গে। সেই সময় রেডিও
+                জকি (RJ) সায়েম, নিরব, মারিয়া নূরের মতো ব্যক্তিত্বরা ছিলেন তারকাখ্যাত। শ্রোতারা নিয়মিত রেডিওতে গান অনুরোধ
+                করতেন, প্রিয় RJ-দের সঙ্গে যোগাযোগ রাখতেন, এমনকি ফ্যান ক্লাবও গড়ে তুলতেন। গাড়ির সিডি প্লেয়ার বদলে রেডিও
+                বসানো হতো, আর নতুন গান প্রথমে রেডিওতেই মুক্তি পেত।
+                কিন্তু ২০১৩ সালের পর থেকে ধীরে ধীরে সেই জনপ্রিয়তা কমতে শুরু করে। ডিজিটাল প্ল্যাটফর্ম—যেমন ইউটিউব,
+                ফেসবুক, ইনস্টাগ্রাম—মানুষের মনোযোগ কেড়ে নেয়। বিজ্ঞাপনদাতারা মুখ ফিরিয়ে নেন, RJ-দের বেতন কমে যায়, এবং
+                অনেকেই টেলিভিশন বা অন্য মিডিয়ায় চলে যান। একইসঙ্গে, রেডিওর কনটেন্টে মৌলিকত্বের অভাব দেখা দেয়—একটি স্টেশন
+                যা করত, অন্যরা সেটাই নকল করত। ফলে শ্রোতারা আগ্রহ হারিয়ে ফেলেন।
+                RJ সায়েম বলেন, “আমরা রেডিওকে সবকিছু দিয়েছিলাম। কিন্তু রেডিও আমাদের ধরে রাখতে পারেনি।” বিজ্ঞাপন সময় কমে
+                গেছে, ভালো RJ-দের অভাব দেখা দিয়েছে, আর সৃজনশীলতার জায়গায় এসেছে ব্যবসায়িক চাপ।
+                তবে আশার আলো দেখাচ্ছে নতুন প্রজন্মের RJ-রা। RJ সাদিয়া বলেন, “আমরা এখন ডিজিটাল প্ল্যাটফর্মে কাজ
+                করছি—ফেসবুক লাইভ, ইউটিউব, অ্যাপস। মানুষ এখন আমাদের কথায় আগ্রহী, শুধু গান নয়।” তিনি আরও বলেন, “যারা সময়ের
+                সঙ্গে বদলাতে পারে, তারাই টিকে থাকে।”
+                বর্তমানে রেডিওতে লাইভ স্পোর্টস কমেন্টারি, সামাজিক সচেতনতা বিষয়ক অনুষ্ঠান, এবং সংক্ষিপ্ত ডিজিটাল শো
+                জনপ্রিয়তা পাচ্ছে। যদিও পুরনো দিনের মতো রেডিওর জৌলুশ নেই, তবুও যারা সৃজনশীলতা ও প্রযুক্তির সঙ্গে তাল
+                মিলিয়ে চলছে, তারা নতুনভাবে শ্রোতাদের কাছে পৌঁছাতে পারছে
+            </p>
+            <h2>কেন কমে গেল ঝলক?</h2>
+            <ul>
+                <li>বিজ্ঞাপন স্লট ও আয়ের পতন—অনেক স্টেশন ঘণ্টায় ১২–১৫ মিনিট থেকে ৫–৬ মিনিটে নেমে আসে।</li>
+                <li>ডিজিটাল-ফার্স্ট শ্রোতা—গান/শো এখন অন-ডিমান্ড, রেডিও লাইভ-অনলি।</li>
+                <li>কনটেন্ট ফরম্যাট স্থির—ভিডিও/পডকাস্টে রূপান্তর ধীর ছিল।</li>
+            </ul>
+
+            <h2>পুনরুদ্ধারের রোডম্যাপ</h2>
+            <ol>
+                <li><strong>Audio + Video simulcast:</strong> লাইভ শো Facebook/YouTube-এ স্ট্রিম, রেডিও অ্যাপ-এ একসঙ্গে।
+                </li>
+                <li><strong>পডকাস্ট কাট-ডাউন:</strong> লং-ফর্ম শো থেকে ৬–১২ মিনিটের হাইলাইট।</li>
+                <li><strong>মিউজিক ডিসকভারি:</strong> লোকাল আর্টিস্ট প্রিমিয়ার, প্লেলিস্ট ব্র্যান্ড, কমিউনিটি
+                    রিকোয়েস্ট।</li>
+                <li><strong>ডেটা-চালিত বিজ্ঞাপন:</strong> জিও/ইন্টারেস্ট টার্গেটিং, ব্র্যান্ডেড কন্টেন্ট।</li>
+            </ol>
+
+            <div class="note">Radio Bang এই হাইব্রিড মডেলের দিকেই যাচ্ছে—লাইভ স্ট্রিম + অনলাইন ফুল-ট্র্যাক + ব্লগ
+                কন্টেন্ট, যাতে সার্চ এবং সোশ্যাল উভয় চ্যানেলে পৌঁছানো যায়।</div>
+
+            <div class="share">
+                <a href="https://www.facebook.com/profile.php?id=61580021317051" target="_blank" rel="noopener">
+                    <i class="fa-brands fa-facebook"></i> Follow on Facebook
+                </a>
+                <a href="https://tanjilhasan-himel.github.io/RadioBang/" target="_blank" rel="noopener">
+                    <i class="fa-solid fa-radio"></i> Listen Live
+                </a>
+                <a href="../">
+                    <i class="fa-solid fa-arrow-left"></i> Back to Blog
+                </a>
+            </div>
+        </article>
+
+        <footer>© <span id="y"></span> Radio Bang</footer>
+    </div>
+    <script>document.getElementById('y').textContent = new Date().getFullYear()</script>
+</body>
+
+</html>

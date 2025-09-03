@@ -1,104 +1,179 @@
 <!doctype html>
 <html lang="bn">
-
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>২০২৫ সালের সেরা বাংলা গান | Radio Bang Blog</title>
-    <meta name="description" content="২০২৫ সালের সেরা বাংলা গানগুলোর তালিকা পড়ুন এবং শুনুন Radio Bang ব্লগে।">
-    <link rel="canonical" href="https://tanjilhasan-himel.github.io/RadioBang/blog/posts/post1.html">
-    <link rel="icon" href="../../image/fav1.png">
-    <style>
-        body {
-            font-family: Inter, Arial, sans-serif;
-            background: #0b0c0f;
-            color: #e9ecf1;
-            margin: 0
-        }
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Radio Bang — পোস্ট</title>
+  <meta name="description" content="Radio Bang ব্লগ পোস্ট।">
+  <link rel="canonical" href="https://tanjilhasan-himel.github.io/RadioBang/blog/post-sample.html">
 
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 22px
-        }
+  <!-- Social -->
+  <meta property="og:title" content="Radio Bang — পোস্ট">
+  <meta property="og:description" content="বিস্তারিত পোস্ট পড়ুন।">
+  <meta property="og:image" content="https://tanjilhasan-himel.github.io/RadioBang/image/fav3.png">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://tanjilhasan-himel.github.io/RadioBang/blog/post-sample.html">
+  <meta name="twitter:card" content="summary_large_image">
 
-        h1 {
-            color: #e11932
-        }
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 
-        p {
-            margin: 14px 0
-        }
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
 
-        footer {
-            text-align: center;
-            margin: 40px 0;
-            color: #9aa3b2;
-            font-size: .9rem
-        }
-    </style>
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" sizes="16x16" href="../image/fav1.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../image/fav2.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="../image/fav3.png">
+  <link rel="apple-touch-icon" href="../image/fav3.png">
+  <meta name="theme-color" content="#e11932">
+
+  <style>
+    :root{
+      --bg:#0b0c0f; --panel:#11151b; --ink:#e9ecf1; --muted:#9aa3b2; --line:#1e2531;
+      --primary:#e11932; --accent:#ff7a90; --glow:rgba(225,25,50,.4);
+      --radius-xl:26px; --radius-lg:18px; --radius-md:12px; --radius-sm:10px;
+      --shadow-1:0 14px 40px rgba(0,0,0,.45);
+      --content-w: 980px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;background:
+        radial-gradient(1200px 800px at 10% -10%, rgba(225,25,50,.08), transparent 60%),
+        radial-gradient(800px 600px at 120% 10%, rgba(255,122,144,.06), transparent 60%),
+        var(--bg);
+      color:var(--ink);
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      line-height:1.7;
+    }
+    .bn{font-family:"Hind Siliguri", Inter, system-ui, sans-serif;}
+
+    .container{max-width:1200px;margin:0 auto;padding:22px}
+
+    /* Header (same) */
+    .rb-header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-bottom:12px;border-bottom:1px solid var(--line)}
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand img{width:56px;height:56px;border-radius:14px;object-fit:contain;background:#0c1117;border:1px solid var(--line)}
+    .titles{display:flex;flex-direction:column}
+    .title{font-size:clamp(1.4rem,1rem+1.6vw,2.1rem);font-weight:900;letter-spacing:-.02em;margin:0}
+    .tag{color:var(--muted)}
+    .rb-nav{display:flex;align-items:center;gap:16px}
+    .chip{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border-radius:999px;background:var(--primary);color:#fff;font-weight:800;letter-spacing:.06em;text-transform:uppercase}
+    .chip .dot{width:8px;height:8px;border-radius:50%;background:#fff}
+    .btn-pill{
+      --pill-bg:#0f1217;
+      position:relative;display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:999px;
+      text-decoration:none;color:var(--ink);font-weight:800;background:var(--pill-bg);isolation:isolate;
+    }
+    .btn-pill::before{
+      content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;
+      background:conic-gradient(from 0deg, transparent 10%, rgba(255,255,255,.08) 12%, var(--primary) 35%, rgba(255,122,144,.6) 55%, var(--primary) 75%, transparent 90%);
+      -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite:xor; mask-composite:exclude; animation:rb-border-rotate 3.5s linear infinite; opacity:.85; pointer-events:none;
+    }
+    @keyframes rb-border-rotate{to{transform:rotate(360deg)}}
+
+    /* Article wrapper */
+    .wrap{
+      margin:18px auto 0; max-width:var(--content-w);
+    }
+    .hero{
+      border:1px solid var(--line);border-radius:var(--radius-xl);
+      background:linear-gradient(180deg,var(--panel),#0e1217);box-shadow:var(--shadow-1);
+      overflow:hidden;
+    }
+    .hero img{width:100%;height:360px;object-fit:cover;display:block}
+    .pad{padding:22px}
+    .meta{color:var(--muted);font-size:.95rem}
+
+    /* Typography for post */
+    .post h1{margin:.2em 0 .4em;font-size:clamp(1.5rem,1.1rem+1.6vw,2.2rem);letter-spacing:-.02em}
+    .post h2{margin:1.4em 0 .4em;font-size:1.3rem}
+    .post p{margin:.8em 0}
+    .post ul{margin:.6em 0 .6em 1.1em}
+    .post li{margin:.25em 0}
+    .post blockquote{
+      margin:1.2em 0;padding:14px 16px;border-left:4px solid var(--primary);
+      background:#0f141a;border-radius:12px;color:var(--ink)
+    }
+    .post a{color:#fff;text-decoration:none;border-bottom:1px dashed rgba(255,255,255,.4)}
+    .post a:hover{border-bottom-color:transparent}
+
+    /* Next/Prev footer */
+    .np{
+      margin:18px auto 0;max-width:var(--content-w);display:flex;gap:10px;flex-wrap:wrap;justify-content:space-between
+    }
+    .np a{
+      text-decoration:none;color:#fff;background:#0f1217;border:1px solid var(--line);border-radius:12px;
+      padding:10px 14px;font-weight:800
+    }
+
+    footer{margin:26px 0 6px;text-align:center;color:var(--muted)}
+    @media (max-width:560px){ .brand img{width:48px;height:48px} .hero img{height:220px} }
+  </style>
 </head>
-
 <body>
-    <div class="container">
-        <h1>🎶 ২০২৫ সালের সেরা বাংলা গান</h1>
-        <p>২০২৫ সালে বাংলা মিউজিক ইন্ডাস্ট্রিতে অসাধারণ কিছু গান এসেছে। এই পোস্টে আমরা শেয়ার করছি সেই টপ গানগুলো।</p>
-        <ul>
-            ২০২৫ সালের হাইলাইট বাংলা গান
-            ১. Killbill Society – সাউন্ডট্র্যাকগুলি
+  <div class="container">
+    <header class="rb-header">
+      <div class="brand">
+        <img src="../image/logo.png" alt="Radio Bang logo">
+        <div class="titles">
+          <h1 class="title">Radio Bang</h1>
+          <div class="tag">Bang Your Day with Bang</div>
+        </div>
+      </div>
+      <nav class="rb-nav">
+        <a class="btn-pill" href="../"><i class="fas fa-home"></i><span>Home</span></a>
+        <a class="btn-pill" href="./"><i class="fas fa-book"></i><span>Blog</span></a>
+        <div class="chip"><span class="dot"></span> On Air</div>
+      </nav>
+    </header>
 
-            সৃজিত মুখোপাধ্যায়ের চলচ্চিত্র Killbill Society‑এর সাউন্ডট্র্যাক অ্যালবামে কিছু গান উল্লেখযোগ্য জায়গা দখল
-            করেছে। বিশেষ করে:
+    <main class="wrap">
+      <article class="hero">
+        <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?q=80&w=1600" alt="Cover">
+        <div class="pad post">
+          <div class="meta">Sep 2025 • Tech</div>
+          <h1 class="bn">Icecast + Cloudflared: ফ্রি স্টেবল স্ট্রিম সেটআপ</h1>
+          <p class="bn">
+            এই গাইডে দেখানো হলো কিভাবে আপনি <strong>Icecast</strong> দিয়ে লোকাল অডিও সার্ভ করবেন
+            এবং <strong>Cloudflared</strong> দিয়ে সেটা পাবলিক URL-এ শেয়ার করবেন — কোন খরচ ছাড়াই।
+          </p>
 
-            “Nei Tumi Aager Moto” (১৯ মার্চ ২০২৫)
+          <h2>Requirements</h2>
+          <ul>
+            <li>Windows / Linux / Mac (লোকাল মেশিন)</li>
+            <li>Icecast server</li>
+            <li>cloudflared (tunnel)</li>
+          </ul>
 
-            “Bhalobeshey Basho Naa” (২৫ মার্চ ২০২৫)
+          <blockquote class="bn">
+            টিপ: যদি Github Pages-এ আপনার ফ্রন্টএন্ড (Radio Bang সাইট) থাকে, তবু
+            স্ট্রিম আসবে আপনার লোকাল/সার্ভার Icecast থেকে — শুধু পাবলিক URLটি আপডেট রাখবেন।
+          </blockquote>
 
-            “Shondhe Naamey” (২৯ মার্চ ২০২৫)
+          <h2>Steps (Quick)</h2>
+          <ol>
+            <li>Icecast ইনস্টল করুন এবং <code>/stream</code> মাউন্ট করুন।</li>
+            <li>PowerShell-এ <code>cloudflared tunnel --url http://localhost:8000</code> রান দিন।</li>
+            <li>মিলে যাওয়া পাবলিক URL index.html-এর <code>STREAM_URL</code> এ বসিয়ে দিন।</li>
+          </ol>
 
-            “Refereer Bnaashi” (৮ এপ্রিল ২০২৫)
-            এই গানগুলো সমালোচক এবং শ্রোতাদের মধ্যে ইতিবাচক সাড়া পেয়েছে
-            Facebook
-            YouTube
-            +6
-            Wikipedia
-            +6
-            Wikipedia
-            +6
-            ।
+          <p>Done. Happy broadcasting! 🎙️</p>
+        </div>
+      </article>
+    </main>
 
-            ২. Borbaad (২০২৫) – চলচ্চিত্রের গান
+    <nav class="np">
+      <a href="./">← Back to Blog</a>
+      <a href="post-sample.html">Next post →</a>
+    </nav>
 
-            শাকিব খান অভিনীত Borbaad চলচ্চিত্রের গানগুলো মাঝেমধ্যে আলোচনায় এসেছে, বিশেষ করে:
-
-            “Didha” (প্রী-রিলিজ টিজার ১২ মার্চ, প্রকাশিত ১৪ মার্চ)
-
-            “Nisshash” (২৪ মার্চ)
-
-            “Chand Mama” (২৮ মার্চ, শাকিবের জন্মদিনে)
-
-            “Mohamaya” (১৪ এপ্রিল, বাংলা নববর্ষে)
-            এগুলি শ্রোতাদের মধ্যে ভালো反響 পেয়েছে
-            Wikipedia
-            +1
-            ।
-
-            ৩. MUZA ও Mumzy Stranger – “Ki Kori”
-
-            বাঙালি-আমেরিকান শিল্পী MUZA (Muzahid Abdullah) এবং Mumzy Stranger-এর নতুন একক “Ki Kori” ২০২৫‑এর এক
-            উল্লেখযোগ্য আধুনিক গান। এটি April 2025‑এ প্রকাশ পেয়েছে এবং জনপ্রিয়তা অর্জন করেছে
-            Wikipedia
-            ।
-
-            সারসংক্ষেপ
-            গান / উৎস কেন উল্লেখযোগ্য
-            Killbill Society সাউন্ডট্র্যাক একাধিক গান প্রকাশ ও জনপ্রিয়তা অর্জন
-            Borbaad চলচ্চিত্রের গান বিভিন্ন সময়ে প্রকাশ ও দর্শকদের সাড়া
-            “Ki Kori” (MUZA & Mumzy Stranger) নতুন একক, আধুনিক স্বরের পরিচয়
-        </ul>
-        <p>👉 এগুলো শুনতে <a href="../../index.html">Radio Bang লাইভ</a> এ টিউন করুন।</p>
-        <footer>© 2025 Radio Bang</footer>
-    </div>
+    <footer>© <span id="y"></span> Radio Bang — A station by Tanjil Hasan Himel</footer>
+  </div>
+  <script>document.getElementById('y').textContent = new Date().getFullYear()</script>
 </body>
-
 </html>

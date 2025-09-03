@@ -18,5 +18,23 @@
     "lang": "en",
     "tags": ["Guide", "Streaming"],
     "readTime": "2 min"
-  }
+  },
+  {
+  "title": "সর্বকালের সেরা বাংলা গান — নির্বাচিত ৫০",
+  "slug": "best-bangla-songs",
+  "date": "2025-09-01",
+  "tags": ["bangla","playlist","classics","guide"],
+  "excerpt": "রবীন্দ্র-নজরুল থেকে আধুনিক ব্যান্ড—আমাদের নির্বাচিত ৫০টি আইকনিক গান ও শোনার টিপস।",
+  "cover": "../../image/blog_image/best-bangla-songs.png"
+},
+{
+  "title": "ঢাকার এফএম রেডিওর পতন থেকে পুনরুদ্ধার",
+  "slug": "best-fm-radios",
+  "date": "2025-09-03",
+  "tags": ["bangla","radio","digital","media"],
+  "excerpt": "স্বর্ণযুগ থেকে ডিজিটালে—পতনের কারণ ও ফিরে আসার পথ।",
+  "cover": "../../image/blog_image/goldenradiotime.png"
+}
+
+
 ]
