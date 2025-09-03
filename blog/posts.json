@@ -1,0 +1,22 @@
+[
+  {
+    "title": "🎶 ২০২৫ সালের সেরা বাংলা গান",
+    "excerpt": "বাংলা মিউজিকের টপ ট্রেন্ডস, হিট লিস্ট এবং শুনুন কোথায়।",
+    "url": "../text.html",
+    "image": "https://tanjilhasan-himel.github.io/RadioBang/image/fav3.png",
+    "date": "2025-09-03",
+    "lang": "bn",
+    "tags": ["Bangla", "Songs", "2025"],
+    "readTime": "3 min"
+  },
+  {
+    "title": "How to Stream Radio Bang Anywhere",
+    "excerpt": "Quick guide to listen from desktop & mobile, even behind firewalls.",
+    "url": "../guide-stream.html",
+    "image": "https://tanjilhasan-himel.github.io/RadioBang/image/fav2.png",
+    "date": "2025-09-03",
+    "lang": "en",
+    "tags": ["Guide", "Streaming"],
+    "readTime": "2 min"
+  }
+]

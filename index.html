@@ -62,6 +62,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <link rel="canonical" href="https://tanjilhasan-himel.github.io/RadioBang/blog/">
   <style>
     :root {
       /* Dark-only palette */
@@ -163,6 +164,158 @@
       border-radius: 50%;
       background: #fff
     }
+
+    /* Header layout */
+    .rb-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--line)
+    }
+
+    .rb-nav {
+      display: flex;
+      align-items: center;
+      gap: 16px
+    }
+
+    /* BLOG pill with animated gradient border + shine */
+    .btn-blog {
+      --pill-bg: #0f1217;
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      text-decoration: none;
+      color: var(--ink);
+      font-weight: 800;
+      background: var(--pill-bg);
+      isolation: isolate;
+    }
+
+    /* Gradient border (only border shows via masking) */
+    .btn-blog::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      padding: 1px;
+      background: conic-gradient(from 0deg,
+          transparent 10%,
+          rgba(255, 255, 255, .08) 12%,
+          var(--primary) 35%,
+          rgba(255, 122, 144, .6) 55%,
+          var(--primary) 75%,
+          transparent 90%);
+      -webkit-mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor;
+      /* chrome/safari */
+      mask-composite: exclude;
+      /* firefox */
+      animation: rb-border-rotate 3.5s linear infinite;
+      opacity: .85;
+      pointer-events: none;
+    }
+
+    /* Subtle inner glow */
+    .btn-blog::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: radial-gradient(60% 180% at -10% 50%, rgba(255, 122, 144, .18), transparent 60%);
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    /* Shine sweep on hover */
+    .btn-blog:hover {
+      color: #fff;
+      box-shadow: 0 6px 22px rgba(225, 25, 50, .18), 0 0 0 1px rgba(225, 25, 50, .3) inset;
+    }
+
+    .btn-blog:hover span {
+      transform: translateY(-.5px);
+    }
+
+    .btn-blog span {
+      transition: transform .18s ease;
+    }
+
+    /* The sweeping light */
+    .btn-blog:hover::after {
+      background:
+        linear-gradient(120deg, transparent 0%, rgba(255, 255, 255, .18) 25%, transparent 50%),
+        radial-gradient(60% 180% at -10% 50%, rgba(255, 122, 144, .18), transparent 60%);
+      background-repeat: no-repeat;
+      background-size: 200% 200%, cover;
+      animation: rb-shine .9s ease-out forwards;
+    }
+
+    /* Keyboard focus */
+    .btn-blog:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(225, 25, 50, .5);
+    }
+
+    /* Chip keeps your existing look */
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: var(--primary);
+      color: #fff;
+      font-weight: 800;
+      letter-spacing: .06em;
+      text-transform: uppercase
+    }
+
+    .chip .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #fff
+    }
+
+    /* Animations */
+    @keyframes rb-border-rotate {
+      to {
+        transform: rotate(360deg)
+      }
+    }
+
+    @keyframes rb-shine {
+      0% {
+        background-position: -150% 50%, center
+      }
+
+      100% {
+        background-position: 150% 50%, center
+      }
+    }
+
+    /* Responsive: stack nav on narrow screens */
+    @media (max-width:520px) {
+      .rb-header {
+        flex-wrap: wrap;
+        gap: 10px
+      }
+
+      .rb-nav {
+        width: 100%;
+        justify-content: space-between
+      }
+    }
+
 
     /* Mode selector */
     .modes {
@@ -492,7 +645,7 @@
 
 <body>
   <div class="container">
-    <header>
+    <header class="rb-header">
       <div class="brand">
         <img src="image/logo.png" alt="Radio Bang logo" />
         <div class="titles">
@@ -500,8 +653,16 @@
           <div class="tag">Bang Your Day with Bang</div>
         </div>
       </div>
-      <div class="chip"><span class="dot"></span> On Air</div>
+
+      <nav class="rb-nav">
+        <a class="btn-blog" href="blog/">
+          <span>Blog</span>
+        </a>
+        <div class="chip"><span class="dot"></span> On Air</div>
+      </nav>
     </header>
+
+
 
     <div class="modes">
       <div class="seg" aria-label="Mode selector">
